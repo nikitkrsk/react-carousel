@@ -1,46 +1,114 @@
-# Getting Started with Create React App
+# Carousel Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Carousel component is a React component that provides a simple carousel functionality for displaying a set of images with navigation controls.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To use the Carousel component in your React project, you can install it via npm(NOT PUBLISHED YET):  
 
-### `npm start`
+```bash
+npm install @nikitkrsk/react-carousel
+```
+## Local Development 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To use it locally add to your package json 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```json
+"dependencies": {
+  "@nikitkrsk/react-carousel": "path/to/package"
+}
+```
 
-### `npm test`
+Or if it's published just do in package
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm link 
+```
+and in child project 
 
-### `npm run build`
+```bash 
+npm link @nikitkrsk/react-carousel
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once installed, you can import the Carousel component and use it in your React application like so:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import React from 'react';
+import Carousel from '@your-package-name/carousel';
 
-### `npm run eject`
+function App() {
+  const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  const handleImageClick = (image) => {
+    console.log('Clicked image:', image);
+  };
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  return (
+    <div>
+      <h1>Image Carousel</h1>
+      <Carousel images={images} onImageClick={handleImageClick} />
+    </div>
+  );
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+export default App;
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## props
 
-## Learn More
+The Carousel component accepts the following props:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `images` (required): 
+  - Type: `string[]`
+  - Description: An array of strings representing the URLs of images to display in the carousel.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `className`: 
+  - Type: `string`
+  - Default: `'undefined'`
+  - Description: A custom CSS class to apply to the carousel container.
+
+- `onImageClick`: 
+  - Type: `(image: string) => void`
+  - Description: A function that will be called when an image in the carousel is clicked. It receives the URL of the clicked image as an argument.
+
+
+## Example 
+
+```js
+import React from 'react';
+import Carousel from '@your-package-name/carousel';
+
+function App() {
+  const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+
+  const handleImageClick = (image) => {
+    console.log('Clicked image:', image);
+  };
+
+  return (
+    <div>
+      <h1>Image Carousel</h1>
+      <Carousel images={images} onImageClick={handleImageClick} className="custom-carousel" />
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Future Improvements
+
+- Server-side rendering
+- Dot mode
+- Custom animation
+- AutoPlay mode
+- Auto play interval
+- Mouse drag to slide
+- Keyboard control to slide
+- Multiple items
+- Show / hide arrows
+- Custom arrows / control buttons
+- Dots
+- Show next/previous set of items partially
